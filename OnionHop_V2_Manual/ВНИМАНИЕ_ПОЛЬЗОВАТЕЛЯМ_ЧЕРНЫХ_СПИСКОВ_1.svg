@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="150" viewBox="0 0 1280 150" fill="none">
+  <g transform="translate(18 11) scale(0.92)">
+    <path d="M40 4C42 18 35 28 22 37C6 48 -2 63 0 81C3 106 24 114 40 114C56 114 77 106 80 81C82 63 74 48 58 37C45 28 38 18 40 4Z" stroke="#5234AA" stroke-width="7.5" fill="none" stroke-linejoin="round"/>
+    <path d="M40 22L40 98" stroke="#5234AA" stroke-width="7" stroke-linecap="round"/>
+    <path d="M40 24C33 36 26 44 18 55C11 65 9 78 13 91C17 102 26 108 40 111" stroke="#5234AA" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M40 24C47 36 54 44 62 55C69 65 71 78 67 91C63 102 54 108 40 111" stroke="#5234AA" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M40 36C34 46 28 53 24 62C20 70 20 82 24 92C27 100 32 105 40 108" stroke="#5234AA" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M40 36C46 46 52 53 56 62C60 70 60 82 56 92C53 100 48 105 40 108" stroke="#5234AA" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M26 111C30 117 35 121 40 121C45 121 50 117 54 111" stroke="#5234AA" stroke-width="4.8" stroke-linecap="round"/>
+    <path d="M35 110C36.5 115 38 118 40 121C42 118 43.5 115 45 110" stroke="#5234AA" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <text x="118" y="90" fill="#5234AA" font-size="36" font-weight="800"
+        font-family="Segoe UI, Arial, Helvetica, sans-serif" letter-spacing="0.15px">
+    ВНИМАНИЕ ПОЛЬЗОВАТЕЛЯМ ЧЕРНЫХ СПИСКОВ!
+  </text>
+</svg>
