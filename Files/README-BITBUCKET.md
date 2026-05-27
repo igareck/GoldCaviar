@@ -40,11 +40,27 @@ https://github.com/igareck/vpn-configs-for-russia
 
 ## 🪞 Зеркала / Mirrors
 
-GitLab:
+**GitLab:**
+
 https://gitlab.com/igareck/vpn-configs-for-russia
 
-Bitbucket:
+**Codeberg:**
+
+https://codeberg.org/igareck/vpn-configs-for-russia
+
+**Gitea:**
+
+https://gitea.com/igareck/vpn-configs-for-russia
+
+**SourceHut:**
+
+https://git.sr.ht/~igareck/vpn-configs-for-russia
+
+**Bitbucket:**
+
 https://bitbucket.org/igareck/vpn-configs-for-russia
+
+
 
 ## Подписки / Subscriptions
 
