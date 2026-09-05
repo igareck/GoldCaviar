@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+                <key>ServerAddresses</key>
+                <array>
+                    <string>1.1.1.1</string>
+                    <string>1.0.0.1</string>
+                </array>
+                <key>ServerURL</key>
+                <string>https://cloudflare-dns.com/dns-query</string>
+            </dict>
+            <key>OnDemandRules</key>
+            <array>
+                <dict>
+                    <key>Action</key>
+                    <string>Connect</string>
+                </dict>
+            </array>
+            <key>PayloadDescription</key>
+            <string>Использует публичный Cloudflare DNS 1.1.1.1 по протоколу DNS-over-HTTPS.</string>
+            <key>PayloadDisplayName</key>
+            <string>Cloudflare DoH</string>
+            <key>PayloadIdentifier</key>
+            <string>com.github.igareck.doh.cloudflare.dns</string>
+            <key>PayloadType</key>
+            <string>com.apple.dnsSettings.managed</string>
+            <key>PayloadUUID</key>
+            <string>47A6D9E0-03C6-4038-A5D4-EC34693E0680</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDescription</key>
+    <string>Профиль Cloudflare DNS-over-HTTPS для iOS 14 и новее.</string>
+    <key>PayloadDisplayName</key>
+    <string>Cloudflare DNS over HTTPS</string>
+    <key>PayloadIdentifier</key>
+    <string>com.github.igareck.doh.cloudflare</string>
+    <key>PayloadOrganization</key>
+    <string>Igareck</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadScope</key>
+    <string>System</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>006F14AF-75C5-4738-AEAA-3066FE95ECD3</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+                <key>ServerAddresses</key>
+                <array>
+                    <string>77.88.8.8</string>
+                </array>
+                <key>ServerURL</key>
+                <string>https://common.dot.dns.yandex.net/dns-query</string>
+            </dict>
+            <key>OnDemandRules</key>
+            <array>
+                <dict>
+                    <key>Action</key>
+                    <string>Connect</string>
+                </dict>
+            </array>
+            <key>PayloadDescription</key>
+            <string>Использует базовый Яндекс DNS по защищённому протоколу DNS-over-HTTPS.</string>
+            <key>PayloadDisplayName</key>
+            <string>Yandex DoH</string>
+            <key>PayloadIdentifier</key>
+            <string>com.github.igareck.doh.yandex.dns</string>
+            <key>PayloadType</key>
+            <string>com.apple.dnsSettings.managed</string>
+            <key>PayloadUUID</key>
+            <string>D0065ADA-EEC6-47DE-B870-CF49E2BA21F0</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDescription</key>
+    <string>Профиль DNS-over-HTTPS для базового Яндекс DNS. Для iOS 14 и новее.</string>
+    <key>PayloadDisplayName</key>
+    <string>Yandex DNS over HTTPS</string>
+    <key>PayloadIdentifier</key>
+    <string>com.github.igareck.doh.yandex</string>
+    <key>PayloadOrganization</key>
+    <string>Igareck</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadScope</key>
+    <string>System</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>FC55047E-5777-412D-986C-6D9A78C34228</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>
