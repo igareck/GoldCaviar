@@ -33,7 +33,7 @@ global {
 subscription {
   # Для другой подписки или зеркала замените ссылку.
   # https-file:// — специальная схема dae, а не ссылка для браузера.
-  igareck_whitelist: 'https-file://raw.githack.com/igareck/vpn-configs-for-russia/main/Vless-Reality-White-Lists-Rus-Mobile.txt'
+  igareck_whitelist: 'https-file://translate.yandex.ru/translate?url=https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/Vless-Reality-White-Lists-Rus-Mobile.txt&lang=de-de'
 }
 
 dns {
