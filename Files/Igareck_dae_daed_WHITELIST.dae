@@ -1,0 +1,118 @@
+# ============================================================
+# Igareck dae/daed WL Client Profile
+# Профиль настроек без встроенных прокси.
+# Прокси поступают из подключённой подписки.
+#
+# Режим WHITELIST (БЕЛЫЕ СПИСКИ):
+# - автоматический выбор лучшего прокси;
+# - GLOBAL (весь интернет через прокси).
+#
+# Требуется dae v2.0.0 или новее.
+# ============================================================
+
+global {
+  # Замените eth1 на ваш LAN-интерфейс:
+  # например br0, br-lan или eth1.
+  lan_interface: eth1
+  wan_interface: auto
+
+  log_level: info
+  auto_config_kernel_parameter: true
+  disable_waiting_network: false
+
+  dial_mode: domain
+  sniffing_timeout: 100ms
+  allow_insecure: true
+
+  # Российские DNS для первоначального запуска
+  # в режиме белых списков.
+  bootstrap_resolver: '77.88.8.8:53'
+  fallback_resolver: '77.88.8.88:53'
+}
+
+subscription {
+  # Для другой подписки или зеркала замените ссылку.
+  # https-file:// — специальная схема dae, а не ссылка для браузера.
+  igareck_whitelist: 'https-file://raw.githack.com/igareck/vpn-configs-for-russia/main/Vless-Reality-White-Lists-Rus-Mobile.txt'
+}
+
+dns {
+  ipversion_prefer: 4
+
+  # Локальный DNS dae.
+  bind: 'tcp+udp://127.0.0.1:5353'
+
+  upstream {
+    resolver: 'https://dns.google/dns-query'
+    bootstrap: 'tcp+udp://77.88.8.8:53'
+  }
+
+  routing {
+    request {
+      sub(igareck_whitelist) -> bootstrap
+      subnode(subtag: igareck_whitelist) -> bootstrap
+
+      fallback: resolver
+    }
+
+    response {
+      upstream(resolver) -> accept
+      upstream(bootstrap) -> accept
+      fallback: accept
+    }
+  }
+}
+
+group {
+  auto_select {
+    filter: subtag(igareck_whitelist)
+    policy: min_moving_avg
+
+    tcp_check_url: 'https://www.gstatic.com/generate_204'
+    tcp_check_http_method: GET
+
+    udp_check_dns: 'dns.google:53,8.8.8.8'
+
+    check_interval: 300s
+    check_tolerance: 150ms
+  }
+}
+
+routing {
+  pname(
+    NetworkManager,
+    systemd-resolved,
+    dnsmasq
+  ) -> must_direct
+
+  dip(
+    77.88.8.8/32,
+    77.88.8.88/32
+  ) -> must_direct
+
+  dip(
+    224.0.0.0/3,
+    'ff00::/8'
+  ) -> direct
+
+  dip(
+    127.0.0.0/8,
+    10.0.0.0/8,
+    172.16.0.0/12,
+    192.168.0.0/16,
+    169.254.0.0/16,
+    100.64.0.0/10,
+    '::1/128',
+    'fc00::/7',
+    'fe80::/10'
+  ) -> direct
+
+  domain(
+    suffix: localhost,
+    suffix: local,
+    suffix: lan,
+    regex: '^[^.]+$'
+  ) -> direct
+
+  fallback: auto_select
+}

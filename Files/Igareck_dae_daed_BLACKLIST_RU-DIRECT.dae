@@ -1,0 +1,117 @@
+# ============================================================
+# Igareck dae/daed Client Profile
+# Профиль настроек без встроенных прокси.
+# Прокси поступают из подключённой подписки.
+#
+# Режим BLACKLIST RU-DIRECT:
+# - автоматический выбор лучшего прокси;
+# - RU-DIRECT.
+#
+# Требуется dae v2.0.0 или новее.
+# ============================================================
+
+global {
+  # Замените eth1 на ваш LAN-интерфейс:
+  # например br0, br-lan или eth1.
+  lan_interface: eth1
+  wan_interface: auto
+
+  log_level: info
+  auto_config_kernel_parameter: true
+  disable_waiting_network: false
+
+  dial_mode: domain
+  sniffing_timeout: 100ms
+  allow_insecure: true
+
+  bootstrap_resolver: '8.8.8.8:53'
+  fallback_resolver: '1.1.1.1:53'
+}
+
+subscription {
+  # Для другой подписки или зеркала замените ссылку.
+  # https-file:// — специальная схема dae, а не ссылка для браузера.
+  igareck_top150: 'https-file://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS_mobile.txt'
+}
+
+dns {
+  ipversion_prefer: 4
+
+  # Локальный DNS dae.
+  bind: 'tcp+udp://127.0.0.1:5353'
+
+  upstream {
+    resolver: 'https://dns.google/dns-query'
+  }
+
+  routing {
+    request {
+      sub(igareck_top150) -> resolver
+      subnode(subtag: igareck_top150) -> resolver
+
+      fallback: resolver
+    }
+
+    response {
+      upstream(resolver) -> accept
+      fallback: accept
+    }
+  }
+}
+
+group {
+  auto_select {
+    filter: subtag(igareck_top150)
+    policy: min_moving_avg
+
+    tcp_check_url: 'https://www.gstatic.com/generate_204'
+    tcp_check_http_method: GET
+
+    udp_check_dns: 'dns.google:53,8.8.8.8'
+
+    check_interval: 300s
+    check_tolerance: 150ms
+  }
+}
+
+routing {
+  pname(
+    NetworkManager,
+    systemd-resolved,
+    dnsmasq
+  ) -> must_direct
+
+  dip(
+    224.0.0.0/3,
+    'ff00::/8'
+  ) -> direct
+
+  dip(
+    127.0.0.0/8,
+    10.0.0.0/8,
+    172.16.0.0/12,
+    192.168.0.0/16,
+    169.254.0.0/16,
+    100.64.0.0/10,
+    '::1/128',
+    'fc00::/7',
+    'fe80::/10'
+  ) -> direct
+
+  domain(
+    suffix: localhost,
+    suffix: local,
+    suffix: lan,
+    regex: '^[^.]+$'
+  ) -> direct
+
+  domain(
+    suffix: ru,
+    suffix: xn--p1ai
+  ) -> direct
+
+  domain(geosite:category-ru) -> direct
+  dip(geoip:ru) -> direct
+
+  fallback: auto_select
+}
